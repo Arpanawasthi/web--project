@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <title>signup form</title>
+   <style>
+       .textcolor{
+           color: rgb(245, 180, 16);
+       }
+   </style>
+   </head>
+  <body class="bg-black">
+   <div class="container pb-5 bg-black mt-5 ">
+    <form class="row textcolor g-3" onsubmit="return validation()">
+        <h3>Sign-up here</h3>
+
+        <div class="col-12">
+          <label for="username" class="form-label">Name</label>
+          <input type="text" class="form-control" id="user">
+          <span id="username" class="text-danger value"></span>
+        </div>
+
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="text" class="form-control" id="Password">
+          <span id="pass" class="text-danger value"></span>
+        </div>
+
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Confirm Password</label>
+          <input type="text" class="form-control" id="confirm" >
+          <span id="conpass" class="text-danger value"></span>
+        </div>
+
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Mobile</label>
+          <input type="text" class="form-control" id="Mobile">
+          <span id="mobileno" class="text-danger value"></span>
+        </div>
+
+        <div class="col-12">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email">
+            <span id="mail" class="text-danger value"></span>
+        </div>
+       
+
+        <div class="col-12">
+        <label for="" class="form-label">gender</label>
+        <input type="radio" name="gender" value="male">male
+        <input type="radio" name="gender" value="male">female
+        <span id="gen" class="text-danger value"></span>
+
+        </div>
+        
+        <div class="col-12">
+         <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+
+     </div>
+
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+
+     <script type="text/javascript">
+        function clearerror(){
+            var error = document.getElementsByClassName('value');
+            for(let item of error){
+                item.innerHTML = "";
+            }
+
+        }
+        
+        function validation(){
+            clearerror();
+            var user = document.getElementById('user').value;
+            var Pass = document.getElementById('Password').value;
+            var con = document.getElementById('confirm').value;
+            var mobile = document.getElementById('Mobile').value;
+            var email = document.getElementById('email').value;
+            var gender = document.getElementsByName('gender');
+
+
+            if(user == ""){
+                document.getElementById('username').innerHTML = "**Please Fill Username!!";
+               return false;
+            }
+             
+            if((user.length<=2)||(user.length > 20)){
+                document.getElementById('username').innerHTML = "**User Length Must Be Between 2 To 20!!";
+                return false;
+            }
+
+            if(!isNaN(user)){
+                document.getElementById('username').innerHTML = "**Only Chracters Are Allowed!!";
+               return false;
+            }
+
+            
+            if(Pass == ""){
+ 
+                document.getElementById('pass').innerHTML = "**Please Fill  Password!!";
+                value =  false;
+            }
+
+            if(con == ""){
+                document.getElementById('conpass').innerHTML = "**Please Fill Password!!";
+                return false;
+            }
+
+            if(con!=Pass){
+                document.getElementById('conpass').innerHTML = "**Password Does Not Match!!";
+                return false;
+            }
+
+            if(mobile == ""){
+                document.getElementById('mobileno').innerHTML = "**Please Fill Mobile No.!!";
+                return false;
+            }
+
+            if(isNaN(mobile)){
+                document.getElementById('mobileno').innerHTML = "**Please Fill Valid Mobile No!!";
+                return false;
+            }
+         
+            if(email == ""){
+                document.getElementById('mail').innerHTML = "**Please Fill Email!!";
+                return false;
+            }
+
+            if(email.indexOf('@')<= 0){
+                document.getElementById('mail').innerHTML = "**Invalid Position Of @!!";
+                return false;
+            }
+            
+
+            if((email.charAt(email.length-4) != '.') && (email.charAt(email.length-3) != '.')){
+               document.getElementById('mail').innerHTML = "**Please Fill Valid Email!!";
+               return false;
+           }
+        
+           if((gender[0].checked==false)&& (gender[1].checked==false)){
+               document.getElementById('gen').innerHTML = "**please select gender";
+               return false;
+           }
+
+         return true;
+        }
+    </script>
+   
+  </body>
+</html>
